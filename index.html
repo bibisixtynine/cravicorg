@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Cravic</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="viewport-fit=cover,user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- apple specific -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Cravic" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="apple-touch-icon" href="logo-proto.jpg" />
+
+  <!-- style -->
+  <style>
+    body,
+    html {
+      height: 100vh;
+      margin: 0;
+      background: black;
+    }
+    @keyframes blurAnimation {
+      0%,
+      100% {
+        filter: blur(50px);
+        opacity: 0;
+      }
+      50% {
+        filter: blur(0px);
+        opacity: 1;
+      }
+    }
+    .bg-image {
+      background-image: url('logo-proto.jpg');
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      animation: blurAnimation 20s infinite;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-image"></div>
+</body>
+
+</html>

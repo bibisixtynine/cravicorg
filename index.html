@@ -30,7 +30,7 @@
         filter: blur(50px);
         opacity: 0;
       }
-      50% {
+      100% {
         filter: blur(0px);
         opacity: 1;
       }
@@ -41,13 +41,60 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      animation: blurAnimation 300s infinite;
+      animation: blurAnimation 69s;
+    }
+    #timer {
+      color: ivory;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 12em;
+      font-family: monospace;
+      font-weight: 900; 
+      z-index: 1000;
     }
   </style>
 </head>
 
 <body>
+
+  <div id="timer"></div>
+
   <div class="bg-image"></div>
+
+  <script>
+  const timerEl = document.getElementById('timer');
+  const bgImageEl = document.querySelector('.bg-image');
+  let remaining_sTime = 690; // en ms
+
+  // Mettre à jour l'opacité en fonction du temps restant
+  const updateOpacity = remainingSTime => {
+    const maxSTime = 690;
+    let opacity = (remainingSTime-420) / maxSTime;
+    if (opacity < 0 ) opacity = 0;
+    bgImageEl.style.opacity = 1 - opacity;
+    timerEl.style.opacity = opacity;
+  };
+
+  const countdown = setInterval(() => {
+    // Mettre à jour l'opacité
+    updateOpacity(remaining_sTime);
+
+    // Mettre à jour le texte du minuteur
+    const roundedTime = Math.round(remaining_sTime / 10);
+    timerEl.textContent = `${roundedTime}`;
+
+    // Diminuer le temps ou arrêter le minuteur si il arrive à zéro
+    if (remaining_sTime <= 0) {
+      clearInterval(countdown);
+      timerEl.style.display = 'none';
+    } else {
+      remaining_sTime -= 1;
+    }
+  }, 100);
+</script>
+
 </body>
 
 </html>

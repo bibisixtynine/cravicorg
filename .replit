@@ -39,4 +39,4 @@ deploymentTarget = "static"
 
 [auth]
 pageEnabled = false
-buttonEnabled = true
+buttonEnabled = false
